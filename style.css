@@ -49,7 +49,7 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 100;
+    z-index: 200;
     padding: 24px 48px;
     display: flex;
     align-items: center;
@@ -81,7 +81,7 @@ nav {
 
 .dot { color: var(--accent); }
 
-nav ul {
+.nav-links {
     display: flex;
     gap: 36px;
     list-style: none;
@@ -98,6 +98,87 @@ nav a {
 nav a:hover { color: var(--accent); }
 
 /* ===========================
+   HAMBURGUER BUTTON
+   =========================== */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    z-index: 300;
+}
+
+.hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform-origin: center;
+}
+
+/* Estado aberto */
+.hamburger.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+.hamburger.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ===========================
+   MOBILE MENU OVERLAY
+   =========================== */
+.mobile-menu {
+    position: fixed;
+    inset: 0;
+    z-index: 150;
+    background: rgba(10,10,10,0.97);
+    backdrop-filter: blur(16px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+}
+
+.mobile-menu.open {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.mobile-menu ul {
+    list-style: none;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+}
+
+.mobile-menu ul li a {
+    font-family: var(--font-display);
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -1px;
+    transition: color 0.2s;
+}
+
+.mobile-menu ul li a:hover {
+    color: var(--accent);
+}
+
+/* ===========================
    HERO
    =========================== */
 .hero {
@@ -110,7 +191,6 @@ nav a:hover { color: var(--accent); }
     overflow: hidden;
 }
 
-/* Background glow blobs */
 .hero::before {
     content: '';
     position: absolute;
@@ -592,5 +672,156 @@ footer {
     .contact  { padding: 80px 24px; }
     footer    { padding: 24px; flex-direction: column; gap: 8px; }
 
-    nav ul { display: none; }
+    /* Esconde nav desktop, mostra hamburguer */
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+}
+
+/* ===========================
+   BOTÃO PREVIEW
+   =========================== */
+.btn-preview {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 16px;
+    padding: 9px 18px;
+    background: transparent;
+    border: 1px solid rgba(127,255,212,0.35);
+    border-radius: 6px;
+    color: var(--accent);
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.03em;
+}
+
+.btn-preview:hover {
+    background: rgba(127,255,212,0.1);
+    border-color: var(--accent);
+    transform: translateY(-1px);
+}
+
+/* ===========================
+   MODAL DE PREVIEW
+   =========================== */
+.preview-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 500;
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.preview-modal.open {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.preview-modal-inner {
+    width: 100%;
+    max-width: 1100px;
+    height: 85vh;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transform: translateY(20px) scale(0.97);
+    transition: transform 0.3s ease;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.6);
+}
+
+.preview-modal.open .preview-modal-inner {
+    transform: translateY(0) scale(1);
+}
+
+.preview-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg2);
+    flex-shrink: 0;
+}
+
+.preview-modal-title {
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.3px;
+}
+
+.preview-modal-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.preview-open-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background: rgba(127,255,212,0.1);
+    border: 1px solid rgba(127,255,212,0.3);
+    border-radius: 6px;
+    color: var(--accent);
+    font-size: 0.78rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.preview-open-btn:hover {
+    background: rgba(127,255,212,0.2);
+}
+
+.preview-close-btn {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.preview-close-btn:hover {
+    border-color: #e07070;
+    color: #e07070;
+}
+
+.preview-iframe-wrap {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+.preview-iframe-wrap iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+@media (max-width: 900px) {
+    .preview-modal { padding: 12px; }
+    .preview-modal-inner { height: 90vh; border-radius: 12px; }
 }
