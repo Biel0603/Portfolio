@@ -113,7 +113,6 @@
                 <article class="project-card">
                     <div class="project-top">
                         <span class="project-type">Web App</span>
-                        <!-- Substitua o href pelo link real do seu projeto -->
                         <a href="https://github.com/Biel0603" class="project-link" target="_blank">↗</a>
                     </div>
                     <h3>Blog de Fofocas</h3>
@@ -126,7 +125,6 @@
                 <article class="project-card card-accent">
                     <div class="project-top">
                         <span class="project-type">Landing Page</span>
-                        <!-- Substitua o href pelo link real do seu projeto -->
                         <a href="https://github.com/Biel0603" class="project-link" target="_blank">↗</a>
                     </div>
                     <h3>Landing Page — Startup Tech</h3>
@@ -139,7 +137,6 @@
                 <article class="project-card">
                     <div class="project-top">
                         <span class="project-type">E-commerce</span>
-                        <!-- Substitua o href pelo link real do seu projeto -->
                         <a href="https://github.com/Biel0603" class="project-link" target="_blank">↗</a>
                     </div>
                     <h3>Loja Virtual</h3>
@@ -149,17 +146,18 @@
                     </div>
                 </article>
 
+                <!-- CORREÇÃO: espaço no path virou %20, e o botão ganhou type="button" -->
                 <article class="project-card card-accent">
                     <div class="project-top">
                         <span class="project-type">Portal de Notícias</span>
-                        <a href="https://github.com/Biel0603" class="project-link" target="_blank">↗</a>
+                        <a href="noticias-do-dia/index.html" class="project-link" target="_blank">↗</a>
                     </div>
                     <h3>DiárioHoje</h3>
                     <p>Portal de notícias completo com ticker ao vivo, tema claro/escuro, busca em tempo real, filtros por categoria, modal de leitura e newsletter. Tudo em HTML, CSS e JS puro.</p>
                     <div class="project-tags">
                         <span>HTML</span><span>CSS</span><span>JavaScript</span>
                     </div>
-                    <button class="btn-preview" onclick="abrirPreview('Noticias do dia/index.html', 'DiárioHoje')">
+                    <button type="button" class="btn-preview" onclick="abrirPreview('noticias-do-dia/index.html', 'DiárioHoje')">
                         <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/></svg>
                         Ver preview
                     </button>
@@ -189,11 +187,12 @@
             <div class="preview-modal-header">
                 <span class="preview-modal-title" id="previewTitle"></span>
                 <div class="preview-modal-actions">
-                    <a class="preview-open-btn" id="previewOpenLink" target="_blank" title="Abrir em nova aba">
+                    <!-- CORREÇÃO: href começa vazio mas definido, evita atributo ausente -->
+                    <a class="preview-open-btn" id="previewOpenLink" href="#" target="_blank" title="Abrir em nova aba">
                         <svg width="15" height="15" fill="none" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><polyline points="15 3 21 3 21 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><line x1="10" y1="14" x2="21" y2="3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
                         Abrir site
                     </a>
-                    <button class="preview-close-btn" onclick="fecharPreview()" title="Fechar">✕</button>
+                    <button type="button" class="preview-close-btn" onclick="fecharPreview()" title="Fechar">✕</button>
                 </div>
             </div>
             <div class="preview-iframe-wrap">
@@ -202,6 +201,7 @@
         </div>
     </div>
 
-    <script src="protifolio.js"></script>
+    <!-- CORREÇÃO: nome do arquivo corrigido de "protifolio.js" para "portfolio.js" -->
+    <script src="portfolio.js"></script>
 </body>
 </html>

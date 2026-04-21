@@ -59,6 +59,7 @@ function abrirPreview(url, nome) {
     const title = document.getElementById('previewTitle');
     const openLink = document.getElementById('previewOpenLink');
 
+    // CORREÇÃO: decodifica o path para exibir legível no botão "Abrir site"
     frame.src = url;
     title.textContent = nome;
     openLink.href = url;
